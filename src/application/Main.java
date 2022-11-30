@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 	
 	public void start(Stage primaryStage) {
+		System.out.println("Test");
 		try {
 			BorderPane root = new BorderPane();
 			Scene scene = new Scene(root,400,400);
