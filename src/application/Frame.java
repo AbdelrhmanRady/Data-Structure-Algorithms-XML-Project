@@ -18,8 +18,8 @@ public class Frame extends  JFrame implements ActionListener {
 	Frame(){		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new FlowLayout());
-		
-		button = new JButton("Select File");
+		setBounds(900, 400, 450, 300);
+		button = new JButton("Select XML File");
 		button.addActionListener(this);
 		
 		this.add(button);
