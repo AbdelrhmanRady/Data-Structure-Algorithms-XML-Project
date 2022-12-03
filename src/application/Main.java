@@ -10,7 +10,17 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		ArrStack stack = new ArrStack();
 		Frame frame = new Frame();
+
+		System.out.println(frame.returnXML());
 		System.out.println(Parsing.parse("topic", frame.returnXML()).toString());
+		Validator v = new Validator();
+		if(v.isCorrect(frame.XML))
+		{
+			System.out.println("correct");
+		}
+		else
+			System.out.println("false");
 	}
 }
