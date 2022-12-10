@@ -35,5 +35,26 @@ public class Main {
 
 			V.Fix_Missing_Bracket_Error(F.get_XML_file());
 			//V.isValid();
+			
+			
+			
+			
+//			Frame frame = new Frame();
+//			FileInputStream fileInputStream = new FileInputStream(frame.returnPath());
+//			Tree tree = new Tree();
+//			tree.insertXML(fileInputStream);
+//			StringBuilder sb = new StringBuilder();
+//
+//			XML2JSON xml2JSON = new XML2JSON(sb,0,frame.returnPath());
+//			xml2JSON.Convert(tree.getTreeRoot());
+//			xml2JSON.createJsonFile();
+//
+//
+//			System.out.println(sb);
+			
+			
+			
+		
+			
 	}
 }

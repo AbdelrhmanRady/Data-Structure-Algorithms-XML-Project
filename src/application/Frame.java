@@ -24,7 +24,7 @@ public class Frame extends JFrame implements ActionListener {
 	JButton button;
 	String XML = "";
 	static boolean check = false;
-
+	String path = "";
 	Frame() {
 //		this.setDefaultCloseOperation(3);
 //		this.setLayout(new FlowLayout());
@@ -42,6 +42,7 @@ public class Frame extends JFrame implements ActionListener {
 			fileChooser.setCurrentDirectory(new File("."));
 			int response = fileChooser.showOpenDialog((Component)null);
 			File file = fileChooser.getSelectedFile();
+			path = fileChooser.getSelectedFile().getAbsolutePath();
 			BufferedReader br = null;
 			if (response == 0) {
 				try {
@@ -93,6 +94,6 @@ public class Frame extends JFrame implements ActionListener {
 			System.out.print("");
 		} while(!check);
 
-		return this.XML;
+		return path;
 	}
 }
