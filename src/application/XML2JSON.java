@@ -95,7 +95,7 @@ public class XML2JSON {
 
 
         } else { //if node has "siblings" of the same tag name (array)
-            if (parent.getChildren().size() > 1 && parent.getChildren().get(0).getTagName() == parent.getChildren().get(1).getTagName()) {
+            if (parent.getChildren().size() > 1 && parent.getChildren().get(0).getTagName().equals(parent.getChildren().get(1).getTagName().trim())) {
                 handleSameChildrenTypesNodeOpen(node);
             } else if (children.size() == 0) {
                 // if node has siblings and no children
@@ -111,7 +111,6 @@ public class XML2JSON {
 
                 //if node has children and siblings
                 if (parent.getChildren().size() > 1) {
-
                     handleChildrenAndSibilingsNodeOpen(node);
 
                 } else {
@@ -139,7 +138,7 @@ public class XML2JSON {
 
         } else {
             //if node has siblings of same type
-            if (parent.getChildren().size() > 1 && parent.getChildren().get(0).getTagName() == parent.getChildren().get(1).getTagName()) {
+            if (parent.getChildren().size() > 1 && parent.getChildren().get(0).getTagName().equals(parent.getChildren().get(1).getTagName())) {
 
                 handleSameChildrenTypesNodeClose(node);
 
