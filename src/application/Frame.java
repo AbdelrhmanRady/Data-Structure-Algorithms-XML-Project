@@ -5,7 +5,7 @@
 
 package application;
 
-import java.awt.Component;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -26,14 +26,14 @@ public class Frame extends JFrame implements ActionListener {
 	static boolean check = false;
 	String path = "";
 	Frame() {
-//		this.setDefaultCloseOperation(3);
-//		this.setLayout(new FlowLayout());
-//		this.setBounds(900, 400, 450, 300);
-//		this.button = new JButton("Select XML File");
-//		this.button.addActionListener(this);
-//		this.add(this.button);
-//		this.pack();
-//		this.setVisible(true);
+		this.setDefaultCloseOperation(3);
+		this.setLayout(new FlowLayout());
+		this.setBounds(900, 400, 450, 300);
+		this.button = new JButton("Select XML File");
+		this.button.addActionListener(this);
+		this.add(this.button);
+		this.pack();
+		this.setVisible(true);
 	}
 
 	public void actionPerformed(ActionEvent e) {

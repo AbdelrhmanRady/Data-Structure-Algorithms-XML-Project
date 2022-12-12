@@ -29,23 +29,23 @@ public class Main {
 		public Main() {
 	}
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-			Frame F = new Frame();
-			Validator V = new Validator();
-			//V.Bracket_isCorrect(F.get_XML_file());
-
-			V.Fix_Missing_Bracket_Error(F.get_XML_file());
-			//V.isValid();
+//			Frame F = new Frame();
+//			Validator V = new Validator();
+//			//V.Bracket_isCorrect(F.get_XML_file());
+//
+//			//V.Fix_Missing_Bracket_Error(F.get_XML_file());
+//			//V.isValid();
 			
 			
 			
 			
 //			Frame frame = new Frame();
-//			FileInputStream fileInputStream = new FileInputStream(frame.returnPath());
+//			FileInputStream fileInputStream = new FileInputStream(frame.returnXML());
 //			Tree tree = new Tree();
 //			tree.insertXML(fileInputStream);
 //			StringBuilder sb = new StringBuilder();
 //
-//			XML2JSON xml2JSON = new XML2JSON(sb,0,frame.returnPath());
+//			XML2JSON xml2JSON = new XML2JSON(sb,0,frame.XML);
 //			xml2JSON.Convert(tree.getTreeRoot());
 //			xml2JSON.createJsonFile();
 //

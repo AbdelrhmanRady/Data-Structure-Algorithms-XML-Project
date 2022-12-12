@@ -17,7 +17,7 @@ public class XML2JSON {
     public int first;
     public StringBuilder stringBuilder;
 
-    public XML2JSON(StringBuilder file, int first) {
+    public XML2JSON(StringBuilder file, int first, String s) {
 
         stringBuilder = file;
         this.first = first;
