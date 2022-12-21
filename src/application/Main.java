@@ -29,12 +29,12 @@ public class Main {
 		public Main() {
 	}
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-//			Frame F = new Frame();
-//			Validator V = new Validator();
-//			//V.Bracket_isCorrect(F.get_XML_file());
-//
-//			//V.Fix_Missing_Bracket_Error(F.get_XML_file());
-//			//V.isValid();
+			Frame F = new Frame();
+			Validator V = new Validator();
+			V.Bracket_isCorrect(F.get_XML_file());
+
+			//V.Fix_Missing_Bracket_Error(F.get_XML_file());
+			//V.isValid();
 			
 			
 			

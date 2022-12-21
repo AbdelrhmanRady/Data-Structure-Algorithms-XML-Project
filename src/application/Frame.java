@@ -67,7 +67,7 @@ public class Frame extends JFrame implements ActionListener {
 	}
 	public String[] get_XML_file() throws IOException {
 		try {
-			File F = new File("sample.xml");
+			File F = new File("\"F:\\College_Projrcts\\Data_Structure_Algorithms_XML_Project\\Intelij_Data_Structure\\Data-Structure-Algorithms-XML-Project\\sample.xml\"");
 			Scanner myfile1 = new Scanner(F);
 			int ctr = 0;
 			while (myfile1.hasNext()) {
