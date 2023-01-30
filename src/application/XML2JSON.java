@@ -28,7 +28,7 @@ public class XML2JSON {
     public void createJsonFile() throws IOException {
         String objectJson = String.valueOf(stringBuilder);
         // System.out.println(objectJson);
-        FileWriter file = new FileWriter("E:output.json");
+        FileWriter file = new FileWriter("D:output.json");
         file.write(objectJson);
         file.close();
     }
