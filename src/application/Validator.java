@@ -45,18 +45,17 @@ public class Validator extends ArrStack {                       /*class validato
         System.out.println("Number of errors:"+number_of_errors);
     }
 
-    public void closing_tag_is_correct(String[] Incorrect_File) {
+    public String tag_is_correct(String[] Incorrect_File) {
         Pattern open_bracket = Pattern.compile("<");                            /*writing < symbol in open_bracket*/
         Pattern close_bracket = Pattern.compile(">");                           /*writing > symbol in close_bracket*/
         ArrStack s = new ArrStack();
         String XML = "";                                                        /*empty string to save corrected file temporarily*/
-        String tag1 = "";
-        String tag2 = "";
+        String open_tag = "";
+        String close_tag = "";
         String error_at="";
         String next_line="";
         String next_line_tag="";
         String prev_line="";
-        int flag=0;
 
         for (int i = 0; i < Incorrect_File.length; i++) {
             XML = Incorrect_File[i];
@@ -70,80 +69,123 @@ public class Validator extends ArrStack {                       /*class validato
                 Matcher matcher4 = close_bracket.matcher(Incorrect_File[i + 1]);         /*searching for > in the xml next line*/
                 if (matcher3.find() && matcher3.find() && matcher4.find() && matcher4.find()) {
                 }
-                else if (next_line.contains("<") && next_line.contains(">") && !next_line.contains("/")) {
-                    next_line_tag = next_line.substring(next_line.indexOf("<") + 1, next_line.indexOf(">"));
+                else if (next_line.contains("<") && next_line.contains(">")) {
+                    if(next_line.contains("/"))
+                    {
+                        next_line_tag = next_line.substring(next_line.indexOf("<") + 2, next_line.indexOf(">"));
+                    }
+                    else
+                    {
+                        next_line_tag = next_line.substring(next_line.indexOf("<") + 1, next_line.indexOf(">"));
+                    }
                 }
-                else if (next_line.contains("<") && next_line.contains(">") && next_line.contains("/")) {
-                    next_line_tag = next_line.substring(next_line.indexOf("<") + 2, next_line.indexOf(">"));
-                }
+            }
+            else{
+                next_line_tag=" ";
             }
             if(XML.contains("<") && XML.contains(">"))
             {
                 if(matcher1.find() && matcher1.find() && matcher2.find() && matcher2.find())
                 {
-                    tag1 = XML.substring(XML.indexOf("<")+1,XML.indexOf(">"));
-                    tag2 = XML.substring(matcher1.end()+1, matcher2.start());
-                    if(!tag1.equals(tag2))
+                    open_tag = XML.substring(XML.indexOf("<")+1,XML.indexOf(">"));
+                    close_tag = XML.substring(matcher1.end()+1, matcher2.start());
+                    if(!open_tag.equals(close_tag))
                     {
-                        System.out.println("j");
-                        error_at = i+"_/"+tag1;
+                        System.out.println("0");
+                        error_at = i+"_/"+open_tag;
+                        System.out.println("there is an error at line: "+(i+1));
                     }
                 }
                 else{
-                    tag1=XML.substring(XML.indexOf("<")+1, XML.indexOf(">"));
+                    open_tag=XML.substring(XML.indexOf("<")+1, XML.indexOf(">"));
                     if (!XML.contains("/")) {
-                        if(flag==1) {
-                            error_at = error_at+"   "+i+"_/"+s.top();
-                            flag=0;
-                        }
-                        if(tag1.equals(s.top()))              /*if two opening tags entered in the stack and equal -> error*/
+                        if(open_tag.equals(s.top()))              /*if two opening tags entered in the stack and equal -> error*/
                         {
-                            error_at = error_at+"   "+i+"_/"+s.top();
-                            flag=0;
+                            error_at = i+"_/"+s.top();
+                            System.out.println("there is an error at line: "+(i+1));
+                            System.out.println("1");
                         }
                         else {
-                            s.push(tag1);
-                            flag = 0;
+                            s.push(open_tag);
                         }
                     }
-                    else
+                    else if(XML.contains("/"))
                     {
-                        tag2 = XML.substring(XML.indexOf("<") + 2, XML.indexOf(">"));
-                        if (tag2.equals(s.top())) {
+                        close_tag = XML.substring(XML.indexOf("<") + 2, XML.indexOf(">"));
+                        if (close_tag.equals(s.top())) {
                             s.pop();
-                            flag=0;
                         }
                         else if(next_line_tag.equals(s.top()) || s.top()==null) {
-                            error_at = error_at+"   "+(i-1) + "_" + "remove";
-                            flag=0;
+                            error_at = (i-1) + "_" + "remove";
+                            System.out.println("there is an error at line: "+(i+1));
                         }
                         else
                         {
                             prev_line=Incorrect_File[i-1];
                             if(!prev_line.contains(">") && !prev_line.contains("<"))
                             {
-                                error_at = error_at+"   "+(i-1)+"_"+tag2;
+                                open_tag= String.valueOf(s.top());
+                                s.pop();
+                                if(close_tag.equals(s.top())) {
+                                    error_at = (i) + "_/" + s.top();
+                                    System.out.println("there is an error at line: " + (i + 1));
+                                    i--;
+                                }
+                                else{
+                                    error_at = (i - 1) + "_" + close_tag;
+                                    System.out.println("there is an error at line: " + (i -1));
+                                    s.push(open_tag);
+                                }
                             }
-                            error_at = error_at+"   "+i + "_/" + s.top();
+                            else if(close_tag.equals(next_line_tag))
+                            {
+                                open_tag= (String) s.top();
+                                s.pop();
+                                if(!close_tag.equals(s.top())) {
+                                    error_at = (i - 1) + "_" + "remove";
+                                    System.out.println("there is an error at line: " + (i + 1));
+                                    s.push(open_tag);
+                                }
+                                else if(close_tag.equals(s.top()))
+                                {
+                                    error_at = i + "_/" + open_tag;
+                                    s.pop();
+                                    System.out.println("there is an error at line: "+(i+1));
+                                }
+                            }
+                            else
+                            {
+                                error_at = (i-1) + "_" + "remove";
+                                System.out.println("there is an error at line: "+(i+1));
+                            }
                         }
                     }
                 }
             }
-            else if(!XML.isEmpty())
+            else
             {
-                flag=1;
+                if(!next_line.contains("/"))
+                {
+                    error_at = (i+1) + "_/" + s.top();
+                    s.pop();
+                    System.out.println("there is an error at line: " + (i + 1));
+                }
             }
+
         }
         if(!s.isEmpty())
         {
-            error_at = error_at+"   "+(Incorrect_File.length-1)+"_/"+s.top();
+            error_at = (Incorrect_File.length-1)+"_/"+s.top();
+            System.out.println("there is an error at line: "+(Incorrect_File.length-1));
         }
         if(error_at.isEmpty())
         {
-            System.out.println("tags are correct");
+            return "-1";
         }
-        else
-            System.out.println(error_at);
+        else {
+            return error_at;
+        }
+
     }
 
 
@@ -208,7 +250,7 @@ public class Validator extends ArrStack {                       /*class validato
     }
 
 
-    public void adding_missing_tag(String[] Incorrect_File,int line,String missing_tag)
+    public ArrayList<String> adding_missing_tag(String[] Incorrect_File, int line, String missing_tag)
     {
         Pattern open_bracket = Pattern.compile("<");                        /*writing < symbol in open_bracket*/
         Pattern close_bracket = Pattern.compile(">");                       /*writing > symbol in close_bracket*/
@@ -238,10 +280,6 @@ public class Validator extends ArrStack {                       /*class validato
             str = "<"+ missing_tag+">"+ "\n" +str ;
         }
         Fixed_file.set(line, str);
-        for(int i=0;i<Fixed_file.size();i++)
-        {
-            System.out.println(Fixed_file.get(i));
-        }
+        return Fixed_file;
     }
-
 }
