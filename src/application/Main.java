@@ -23,38 +23,28 @@
 
 
 package application;
+import java.awt.EventQueue;
 import java.io.*;
 
 public class Main {
 		public Main() {
 	}
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-			Frame F = new Frame();
-			Validator V = new Validator();
-			V.Bracket_isCorrect(F.get_XML_file());
-
-			//V.Fix_Missing_Bracket_Error(F.get_XML_file());
-			//V.isValid();
-			
-			
-			
-			
-//			Frame frame = new Frame();
-//			FileInputStream fileInputStream = new FileInputStream(frame.returnXML());
-//			Tree tree = new Tree();
-//			tree.insertXML(fileInputStream);
-//			StringBuilder sb = new StringBuilder();
-//
-//			XML2JSON xml2JSON = new XML2JSON(sb,0,frame.XML);
-//			xml2JSON.Convert(tree.getTreeRoot());
-//			xml2JSON.createJsonFile();
-//
-//
-//			System.out.println(sb);
-			
-			
-			
-		
-			
+		/**
+		 * Launch the application.
+		 */
+		public static void main(String[] args) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						GUI frame = new GUI();
+						frame.setVisible(true);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+			});
+		}				
 	}
 }
