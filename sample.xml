@@ -73,6 +73,9 @@
             </post>
         </posts>
         <followers>
+            <follower>
+                <id>2</id>
+            </follower>
         </followers>
     </user>
 </users>

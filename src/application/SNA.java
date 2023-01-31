@@ -197,7 +197,13 @@ public class SNA {
 		String digraph = "";
 		for ( Integer key : Users.keySet() ) {
 			for(int j=0;j<Users.get(key).size();j++) {
-				digraph += Integer.toString(Users.get(key).get(j))+"->"+Integer.toString(key)+";";
+				String followerName = capitalizeWord(Names.get(Users.get(key).get(j)));
+				followerName = followerName.replace(" ", "_");
+				String followingName = capitalizeWord(Names.get(key));
+				followingName = followingName.replace(" ","_");
+				String followerID = "_"+Integer.toString(Users.get(key).get(j));
+				String followingID = "_"+Integer.toString(key);
+				digraph += followerName+followerID+"->"+followingName+followingID+";";
 			}
 		}
 		GraphViz.createDotGraph(digraph, "DotGraph");

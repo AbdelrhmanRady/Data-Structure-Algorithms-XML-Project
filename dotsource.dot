@@ -1,2 +1,2 @@
 digraph G {
-4->2;3->2;3->4;}
+Yasser_Ahmed_4->Ahmed_Ali_2;Mohamed_Sherif_3->Ahmed_Ali_2;Ahmed_Ali_2->Mohamed_Sherif_3;Mohamed_Sherif_3->Yasser_Ahmed_4;}

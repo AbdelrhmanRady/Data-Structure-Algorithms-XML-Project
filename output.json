@@ -62,7 +62,11 @@
                }
             }
          },
-         "followers":""
+         "followers": {
+            "follower": {
+               "id":"2"
+            }
+         }
       }
       ]
    }
