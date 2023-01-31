@@ -1,67 +1,69 @@
 {
    "users": {
-      "user": {
-         "id":"1",
+      "user": [
+      {
+         "id":"2",
          "name":"Ahmed Ali",
+         "posts": {
+            "post": [
+            {
+               "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+               "topics": {
+                  "topic": [
+                   "economy",
+                   "finance"
+                  ]
+               }
+            },
+            {
+               "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+               "topics": {
+                  "topic":"solar_energy"
+               }
+            }
+            ]
+         },
+         "followers": {
+            "follower": [
+            {
+               "id":"4"
+            },
+            {
+               "id":"3"
+            }
+            ]
+         }
+      },
+      {
+         "id":"4",
+         "name":"Yasser Ahmed",
          "posts": {
             "post": {
                "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                "topics": {
-                  "topic":"economy",
-                  "topic                        finance                    </topic":""
-               },
-               "post": {
-                  "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "topics": {
-                     "topic":"solar_energy"
-                  }
-               }
-            },
-            "followers": {
-               "follower": [
-               {
-                  "id":"2"
-               },
-               {
-                  "id":"3"
-               }
-               ]
-            }
-         },
-         "user": {
-            "id":"2",
-            "name":"Yasser Ahmed",
-            "posts": {
-               "post": {
-                  "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "topics": {
-                     "topic":"education"
-                  }
-               }
-            },
-            "followers": {
-               "follower": {
-                  "id":"1"
+                  "topic":"education"
                }
             }
          },
-         "user": {
-            "id":"3",
-            "name":"Mohamed Sherif",
-            "posts": {
-               "post": {
-                  "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "topics": {
-                     "topic":"sports"
-                  }
-               }
-            },
-            "followers": {
-               "follower": {
-                  "id":"1"
-               }
+         "followers": {
+            "follower": {
+               "id":"3"
             }
          }
+      },
+      {
+         "id":"3",
+         "name":"Mohamed Sherif",
+         "posts": {
+            "post": {
+               "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+               "topics": {
+                  "topic":"sports"
+               }
+            }
+         },
+         "followers":""
       }
+      ]
    }
 }

@@ -40,6 +40,9 @@ public class XMLtoGraph {
 	    Pattern pattern3 = Pattern.compile("}\n");
 	    Matcher matcher3 = pattern3.matcher(JSON);
 	    
+	    Pattern pattern4 = Pattern.compile("\"follower\"");
+	    Matcher matcher4 = pattern4.matcher(JSON);
+	    
 	    //patterns used for finding certain keywords 
 	    
 	    
@@ -61,6 +64,10 @@ public class XMLtoGraph {
 	    	while(matcher2.find(idIndex)) { //find id tag
 	    		if(start) { //to get the first index of id
 		    		firstID = matcher2.start();
+	    			if(matcher4.find(nameIndex)) {
+	    				if(matcher4.start()>firstID) break;
+	    			}
+	    			else return graph;
 		    		start = false;
 	    		}
 	    		if(matcher3.find(firstID)) { //finds ending index for the followers id
