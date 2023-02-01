@@ -6,8 +6,10 @@ import java.io.IOException;
 import java.security.KeyStore.Entry;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.lang.Object;
 
 
@@ -49,6 +51,8 @@ public class SNA {
 		int max = 0;
 		int maxID = 0;
 		int num;
+		boolean same = false;
+		
 		
 		
 		for ( Integer key : Users.keySet() ) {
@@ -59,16 +63,47 @@ public class SNA {
 			}
 		}
 		
-		System.out.println(capitalizeWord("The most influencer user is: "+Names.get(maxID)
-		+", with an id of "+maxID+", and number of followers: "+Users.get(maxID).size()));
+		if(max == 0) {
+			System.out.println("All Users have no followers");
+			System.out.println("");
+			return;
+		}
+		
+		for ( Integer key : Users.keySet() ) {
+			if(Users.get(key).size() == max) same = true;
+			else {
+				same = false;
+				break;
+			}
+		}
+		
+		if(same == true) {
+			System.out.println("All Users Have The Same Influence (Same Number Of Followers) ");
+			System.out.println("");
+			return;
+		}
+		
+		System.out.println(capitalizeWord("The most influencer user(s) Are/is: "));
+		System.out.println("");
+		for ( Integer key : Users.keySet() ) {
+			
+			if(Users.get(key).size() == max) {
+				System.out.println(capitalizeWord(Names.get(key)+", with an id of "+key+", and number of followers: "+Users.get(key).size()));
+			}
+			
+		}
+		
+		System.out.println("");
 		
 	}
 	
-	public void mostActive() {	
+	public void mostActive() {
+
 		HashMap<Integer, Integer> Active = new HashMap<Integer, Integer>();
+		
 		int max = -1;
 		int maxID = 0;
-		
+	
 		for ( Integer key : Users.keySet() ) {
 			Active.put(key,0);
 		}
@@ -90,8 +125,30 @@ public class SNA {
 			}
 		}
 		
-		System.out.println(capitalizeWord("The most active user is : "+Names.get(maxID)
-		+", with an id of "+maxID+", following : "+max+" users"));
+		if(max == 0) {
+			System.out.println("All Users don't follow someone");
+			System.out.println("");
+			return;
+		}
+		
+		Set<Integer> values = new HashSet<Integer>(Active.values());
+		boolean isUnique = values.size() == 1;
+		
+		if(isUnique) {
+			System.out.println("All Users have The Same Activity (Same Number Of Follows)");
+			return;
+		}
+		
+		System.out.println(capitalizeWord("The most active user(s) Are/is:"));
+		System.out.println("");
+		for ( Integer key : Active.keySet() ) {
+			
+			if(Active.get(key) == max) {
+				System.out.println(capitalizeWord(Names.get(key)+", with an id of "+key+", following : "+max+" users"));
+			}
+			
+		}
+		System.out.println("");
 	}
 	public void mutualFollowers(int id1,int id2) {
 		
@@ -108,7 +165,7 @@ public class SNA {
 			list1.add(Users.get(id1).get(i));
 		}
 		for(int i = 0;i<Users.get(id2).size();i++) {
-			list1.add(Users.get(id2).get(i));
+			list2.add(Users.get(id2).get(i));
 		}
 		
 		list1.retainAll(list2);
@@ -120,6 +177,7 @@ public class SNA {
 			System.out.println(capitalizeWord(Names.get(list1.get(i))));
 		}
 		}
+		System.out.println("");
 	}
 	
 	public void mutualFollowers(String name1,String name2) {
@@ -143,7 +201,7 @@ public class SNA {
 			list1.add(Users.get(id1).get(i));
 		}
 		for(int i = 0;i<Users.get(id2).size();i++) {
-			list1.add(Users.get(id2).get(i));
+			list2.add(Users.get(id2).get(i));
 		}
 		
 		list1.retainAll(list2);
@@ -155,6 +213,7 @@ public class SNA {
 		}
 		
 		}
+		System.out.println("");
 		
 	}
 	
@@ -166,12 +225,15 @@ public class SNA {
 			
 			eliminate.add(key);		
 			ArrayList<Integer> compared = Users.get(key);
-			for(int z=0;z<compared.size();z++) {
-				eliminate.add(compared.get(z));
-			}
+//			for(int z=0;z<compared.size();z++) {
+//				eliminate.add(compared.get(z));
+//			}
 			
 			for(int j=0;j<compared.size();j++) {
 				for(int k=0;k<Users.get(compared.get(j)).size();k++) {
+					if(Users.get(Users.get(compared.get(j)).get(k)).contains(key)) {
+						continue;
+					}
 					suggested.add(Users.get(compared.get(j)).get(k));
 				}
 			}
@@ -187,6 +249,7 @@ public class SNA {
 				}
 				System.out.println("");
 			}
+			System.out.println("");
 		}
 		
 		
@@ -195,7 +258,23 @@ public class SNA {
 	public void drawConnections() {
 		
 		String digraph = "";
+		
 		for ( Integer key : Users.keySet() ) {
+			if(Users.get(key).size()== 0) {
+				
+				for ( Integer keyy : Users.keySet() ) {
+					if(Users.get(keyy).contains(key)) {
+						break;
+					}
+					else {
+						String followingName = capitalizeWord(Names.get(key));
+						followingName = followingName.replace(" ","_");
+						digraph+= followingName+"_"+Integer.toString(key)+";";
+					}
+				}
+	
+			}
+			else {
 			for(int j=0;j<Users.get(key).size();j++) {
 				String followerName = capitalizeWord(Names.get(Users.get(key).get(j)));
 				followerName = followerName.replace(" ", "_");
@@ -204,6 +283,7 @@ public class SNA {
 				String followerID = "_"+Integer.toString(Users.get(key).get(j));
 				String followingID = "_"+Integer.toString(key);
 				digraph += followerName+followerID+"->"+followingName+followingID+";";
+			}
 			}
 		}
 		GraphViz.createDotGraph(digraph, "DotGraph");

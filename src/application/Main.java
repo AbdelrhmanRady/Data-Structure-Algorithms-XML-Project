@@ -55,7 +55,8 @@ public class Main {
 			
 			sna.mostActive();
 			sna.mostInfluencer();
-			sna.mutualFollowers("Mohamed Sherif", "YasSer Ahmed");
+			sna.mutualFollowers("Ahmed Ali", "YasSer Ahmed");
+			sna.suggestUsers();
 			sna.drawConnections();
 	        
 //			XMLtoGraph gr = new XMLtoGraph();

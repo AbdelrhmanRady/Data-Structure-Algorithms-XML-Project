@@ -67,7 +67,16 @@ public class XMLtoGraph {
 	    			if(matcher4.find(nameIndex)) {
 	    				if(matcher4.start()>firstID) break;
 	    			}
-	    			else return graph;
+	    			else {
+	    				while(matcher1.find()) {
+	    					nameIndex = matcher1.start();
+	    			    	idIndex = matcher1.start();
+	    			    	lastIndex = JSON.lastIndexOf("\"",nameIndex-2);
+	    			    	followed = Integer.parseInt(JSON.substring(JSON.lastIndexOf("\"",lastIndex-1)+1,lastIndex));
+	    			    	graph.addUser(followed); //add the id to the graph
+	    				}
+	    				return graph;
+	    			}
 		    		start = false;
 	    		}
 	    		if(matcher3.find(firstID)) { //finds ending index for the followers id
