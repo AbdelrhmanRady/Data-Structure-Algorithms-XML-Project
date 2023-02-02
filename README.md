@@ -148,3 +148,27 @@ mentioned by iterating line by line over the prettified file. so we either searc
 same idea for topic search but difference is that same post can have many topics
 
 ![2023-02-02 (12)](https://user-images.githubusercontent.com/92223732/216433637-ab600122-ec16-4aea-b88a-1c41570cc3de.png)
+
+
+●Graph visualization: 
+About Bonus Part:
+In the bonus function that visualizes the graph, we used GraphViz, using a class provided in its documentation.
+In order for It to work properly, we uploaded with the Exe some necessary files for it, but installation is still required, so here are the steps:
+
+
+
+
+
+1-	Go to the download link https://graphviz.org/download/
+2-	Scroll down and choose a suitable version  
+![image](https://user-images.githubusercontent.com/92223732/216475038-38dd2f17-b4a1-4543-b923-320a2b20449a.png)
+
+3-	You must choose this option  during installation 
+![image](https://user-images.githubusercontent.com/92223732/216475073-9e3fcfab-8628-43da-8207-85b35ebc4522.png)
+
+
+
+4-	And finally, restart your computer to ensure that it’s installed correctly, no other steps are required, and it can work fine from the exe provided.
+
+
+
