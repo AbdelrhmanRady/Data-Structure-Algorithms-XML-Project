@@ -16,8 +16,7 @@ should also work on designing the program such that it makes use of optimal data
 for the implemented features.
 
 Sample of an XML file file:
-https://drive.google.com/file/d/1_GeHIjYQZEAZNu6ZxdXEotPnHhiKnaWn/view?usp=sharin
-g
+https://drive.google.com/file/d/1_GeHIjYQZEAZNu6ZxdXEotPnHhiKnaWn/view?usp=sharing
 
 project is distributed into 2 phases
 1) 1st Phase:
