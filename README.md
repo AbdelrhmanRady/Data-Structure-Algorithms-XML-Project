@@ -136,7 +136,8 @@ extract some important data:
 ![2023-02-02 (8)](https://user-images.githubusercontent.com/92223732/216432922-ef9d4380-f397-451c-b967-d5f556995b4c.png)
 
 - the mutual followers between 2 users
-![2023-02-02 (11)](https://user-images.githubusercontent.com/92223732/216433219-8f4710a8-7635-4fdf-a301-958391220a0b.png)
+![2023-02-03](https://user-images.githubusercontent.com/92223732/216471377-3b621d0a-b2c3-4667-bed9-0600dad89c8b.png)
+
 
 - for each user, suggest a list of users to follow (the followers of his followers)
 ![2023-02-02 (9)](https://user-images.githubusercontent.com/92223732/216432837-feff9648-e6ee-4982-80ed-d88549bb834f.png)
