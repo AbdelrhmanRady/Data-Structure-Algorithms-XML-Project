@@ -105,7 +105,9 @@ binary again then, we can take the code and traverse through the tree to find
 the character.
 
 
-more about HUFFMAN: https://www.youtube.com/watch?v=21_bJLB7gyU
+more about HUFFMAN: 
+https://www.youtube.com/watch?v=21_bJLB7gyU
+
 https://www.programiz.com/dsa/huffman-coding
 
 note: in video and internet resources you can find huffman encoding but not necessarily compression so check code to get it.
